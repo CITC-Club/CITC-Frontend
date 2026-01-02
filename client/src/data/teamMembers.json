@@ -1,0 +1,128 @@
+{
+  "mentors": [
+    {
+      "name": "Dr. Rajesh Kumar Shrestha",
+      "role": "Technical Mentor",
+      "image": "https://ui-avatars.com/api/?name=Rajesh+Kumar&background=2563eb&color=fff&size=256",
+      "bio": "Expert in Software Engineering and Cloud Computing with 15+ years of experience.",
+      "social": {
+        "email": "rajesh.shrestha@ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/rajesh-shrestha",
+        "github": "https://github.com/rajesh-shrestha"
+      }
+    },
+    {
+      "name": "Prof. Anita Sharma",
+      "role": "Design Mentor",
+      "image": "https://ui-avatars.com/api/?name=Anita+Sharma&background=2563eb&color=fff&size=256",
+      "bio": "UI/UX Design specialist and Human-Computer Interaction researcher.",
+      "social": {
+        "email": "anita.sharma@ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/anita-sharma",
+        "twitter": "https://twitter.com/anitasharma"
+      }
+    },
+    {
+      "name": "Er. Bikash Thapa",
+      "role": "Industry Mentor",
+      "image": "https://ui-avatars.com/api/?name=Bikash+Thapa&background=2563eb&color=fff&size=256",
+      "bio": "Senior Software Architect with expertise in full-stack development and DevOps.",
+      "social": {
+        "email": "bikash.thapa@ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/bikash-thapa",
+        "github": "https://github.com/bikash-thapa"
+      }
+    }
+  ],
+  "executiveCommittee": [
+    {
+      "name": "Krishna Prasad Acharya",
+      "role": "President",
+      "image": "https://ui-avatars.com/api/?name=Abishek+Khadka&background=0ea5e9&color=fff&size=256",
+      "bio": "Leading CITC with a vision to foster innovation and technical excellence among students.",
+      "social": {
+        "email": "abishek@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/abishek-khadka",
+        "github": "https://github.com/abishek-khadka",
+        "twitter": "https://twitter.com/abishekkhadka"
+      }
+    },
+    {
+      "name": "Priya Maharjan",
+      "role": "Vice President",
+      "image": "https://ui-avatars.com/api/?name=Priya+Maharjan&background=0ea5e9&color=fff&size=256",
+      "bio": "Passionate about organizing tech events and building a strong developer community.",
+      "social": {
+        "email": "priya@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/priya-maharjan",
+        "github": "https://github.com/priya-maharjan"
+      }
+    },
+    {
+      "name": "Suman Tamang",
+      "role": "Secretary",
+      "image": "https://ui-avatars.com/api/?name=Suman+Tamang&background=0ea5e9&color=fff&size=256",
+      "bio": "Ensuring smooth operations and effective communication within the club.",
+      "social": {
+        "email": "suman@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/suman-tamang",
+        "github": "https://github.com/suman-tamang"
+      }
+    },
+    {
+      "name": "Kritika Shrestha",
+      "role": "Treasurer",
+      "image": "https://ui-avatars.com/api/?name=Kritika+Shrestha&background=0ea5e9&color=fff&size=256",
+      "bio": "Managing club finances and ensuring transparent financial operations.",
+      "social": {
+        "email": "kritika@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/kritika-shrestha"
+      }
+    },
+    {
+      "name": "Rohan Adhikari",
+      "role": "Technical Lead",
+      "image": "https://ui-avatars.com/api/?name=Rohan+Adhikari&background=0ea5e9&color=fff&size=256",
+      "bio": "Leading technical workshops and hackathons to enhance coding skills.",
+      "social": {
+        "email": "rohan@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/rohan-adhikari",
+        "github": "https://github.com/rohan-adhikari",
+        "twitter": "https://twitter.com/rohanadhikari"
+      }
+    },
+    {
+      "name": "Sneha Karki",
+      "role": "Event Coordinator",
+      "image": "https://ui-avatars.com/api/?name=Sneha+Karki&background=0ea5e9&color=fff&size=256",
+      "bio": "Coordinating exciting tech events and ensuring memorable experiences.",
+      "social": {
+        "email": "sneha@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/sneha-karki",
+        "twitter": "https://twitter.com/snehakarki"
+      }
+    },
+    {
+      "name": "Manish Gurung",
+      "role": "Public Relations Officer",
+      "image": "https://ui-avatars.com/api/?name=Manish+Gurung&background=0ea5e9&color=fff&size=256",
+      "bio": "Building partnerships and promoting CITC activities across campus and beyond.",
+      "social": {
+        "email": "manish@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/manish-gurung",
+        "twitter": "https://twitter.com/manishgurung"
+      }
+    },
+    {
+      "name": "Aakriti Poudel",
+      "role": "Creative Head",
+      "image": "https://ui-avatars.com/api/?name=Aakriti+Poudel&background=0ea5e9&color=fff&size=256",
+      "bio": "Designing creative content and managing the club's visual identity.",
+      "social": {
+        "email": "aakriti@citc.ncit.edu.np",
+        "linkedin": "https://linkedin.com/in/aakriti-poudel",
+        "github": "https://github.com/aakriti-poudel"
+      }
+    }
+  ]
+}
