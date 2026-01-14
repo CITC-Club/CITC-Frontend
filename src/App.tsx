@@ -6,15 +6,8 @@ import TeamPage from './pages/TeamPage';
 import EventsPage from './pages/EventsPage';
 import EventDetailsPage from './pages/EventDetailsPage';
 import AIRegistrationPage from './pages/AIRegistrationPage';
+import JoinClubPage from './pages/JoinClubPage';
 import ScrollToTop from './components/ScrollToTop';
-import formbricks from "@formbricks/js";
-
-if (typeof window !== "undefined") {
-  formbricks.setup({
-    environmentId: "cmkea24meoa7gad010xyamzmr",
-    appUrl: "https://app.formbricks.com",
-  });
-}
 
 function App() {
   return (
@@ -27,6 +20,7 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:id" element={<EventDetailsPage />} />
         <Route path="/register/ai" element={<AIRegistrationPage />} />
+        <Route path="/join" element={<JoinClubPage />} />
       </Routes>
       <Footer />
     </div>
