@@ -4,7 +4,6 @@ export interface Socials {
     instagram?: string;
     facebook?: string;
     twitter?: string;
-    website?: string;
 }
 
 export interface Team {
@@ -16,7 +15,7 @@ export interface Team {
 export interface Member {
     id: string;
     name: string;
-    type: string; // e.g., "Executive", "Patron", "Faculty Advisor"
+    type: string; // e.g., "Regular", "Faculty Advisor"
     title?: string;
     department?: string;
     email: string;
@@ -25,7 +24,7 @@ export interface Member {
     member_year: number;
     teamId: string;
     socials?: Socials;
-    college_year?: number;
+    semester?: string;
 }
 
 export interface Event {

@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Calendar, MapPin, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import type { EventData, Event } from '../types';
-import { getPageSEO, getMetaTags, getEventSchema, SITE_CONFIG } from '../config/seoData';
 
 const EventDetailsPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -47,57 +43,8 @@ const EventDetailsPage = () => {
 
     const isRunning = event.status === 'running';
 
-    const seoPageData = getPageSEO('events');
-    const pageTitle = `${event.title} - CITC Event`;
-    const pageDescription = event.description.substring(0, 160) + '...';
-    const pageUrl = typeof window !== 'undefined' ? window.location.href : `${SITE_CONFIG.url}/events/${event.id}`;
-    const keywords = `${event.title}, CITC event, ${event.tags?.join(', ')}, ${seoPageData.keywords}`;
-    
-    const metaTags = getMetaTags({
-        title: pageTitle,
-        description: pageDescription,
-        url: pageUrl,
-        image: event.image,
-        keywords: keywords,
-    });
-
-    const eventSchema = getEventSchema(event);
-
     return (
-        <>
-            <Helmet>
-                {/* Primary Meta Tags */}
-                <title>{metaTags.title}</title>
-                <meta name="title" content={metaTags.meta.title} />
-                <meta name="description" content={metaTags.meta.description} />
-                <link rel="canonical" href={pageUrl} />
-                
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content={metaTags.og.type} />
-                <meta property="og:url" content={metaTags.og.url} />
-                <meta property="og:title" content={metaTags.og.title} />
-                <meta property="og:description" content={metaTags.og.description} />
-                <meta property="og:image" content={metaTags.og.image} />
-                <meta property="og:site_name" content={metaTags.og.siteName} />
-                
-                {/* Twitter */}
-                <meta name="twitter:card" content={metaTags.twitter.card} />
-                <meta name="twitter:url" content={metaTags.twitter.url} />
-                <meta name="twitter:title" content={metaTags.twitter.title} />
-                <meta name="twitter:description" content={metaTags.twitter.description} />
-                <meta name="twitter:image" content={metaTags.twitter.image} />
-                
-                {/* Additional SEO */}
-                <meta name="keywords" content={metaTags.meta.keywords} />
-                <meta name="author" content={metaTags.meta.author} />
-                <meta name="robots" content={metaTags.meta.robots} />
-            </Helmet>
-
-            <script type="application/ld+json">
-                {JSON.stringify(eventSchema)}
-            </script>
-
-            <div className="min-h-screen pt-24 pb-20 bg-white dark:bg-[#0f172a] transition-colors duration-300">
+        <div className="min-h-screen pt-24 pb-20 bg-white dark:bg-[#0f172a] transition-colors duration-300">
             {/* Hero Image */}
             <div className='h-10'></div>
             <div className="relative h-[40vh] md:h-[50vh] w-full overflow-hidden">
@@ -136,13 +83,11 @@ const EventDetailsPage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Main Content */}
                     <div className="lg:col-span-2 space-y-8">
-                        <div className="bg-white dark:bg-slate-900/50 rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-white/10">
-                            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 pb-3 border-b border-slate-200 dark:border-slate-700">About the Event</h2>
-                            <div className="markdown-content">
-                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                    {event.description}
-                                </ReactMarkdown>
-                            </div>
+                        <div className="prose prose-lg dark:prose-invert max-w-none">
+                            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">About the Event</h2>
+                            <p className="text-slate-600 dark:text-slate-300 whitespace-pre-line leading-relaxed">
+                                {event.description}
+                            </p>
                         </div>
 
                         {/* Gallery Section for Past Events */}
@@ -219,7 +164,6 @@ const EventDetailsPage = () => {
                 </div>
             </div>
         </div>
-        </>
     );
 };
 

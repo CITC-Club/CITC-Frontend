@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Calendar, History } from 'lucide-react';
 import EventCard from '../components/EventCard';
 import type { EventData } from '../types';
-import { getPageSEO, getMetaTags, getEventSchema } from '../config/seoData';
 
 const EventsPage = () => {
     const [eventData, setEventData] = useState<EventData | null>(null);
@@ -24,7 +22,7 @@ const EventsPage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen pt-40 flex items-center justify-center bg-white dark:bg-[#0f172a] transition-colors duration-300">
+            <div className="min-h-screen pt-24 flex items-center justify-center bg-white dark:bg-[#0f172a] transition-colors duration-300">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-500"></div>
             </div>
         );
@@ -33,7 +31,7 @@ const EventsPage = () => {
     if (!eventData) {
         return (<>
             <div className='h-10'></div>
-            <div className="min-h-screen pt-40 text-center text-slate-900 dark:text-white bg-white dark:bg-[#0f172a] transition-colors duration-300">
+            <div className="min-h-screen pt-24 text-center text-slate-900 dark:text-white bg-white dark:bg-[#0f172a] transition-colors duration-300">
                 Failed to load event data.
             </div></>
         );
@@ -50,69 +48,9 @@ const EventsPage = () => {
     const activeEvents = [...runningEvents, ...upcomingEvents];
     const pastEvents = eventData.events.filter(e => e.status === 'past');
 
-    const seoData = getPageSEO('events');
-    const pageUrl = typeof window !== 'undefined' ? window.location.href : seoData.url;
-    const description = activeEvents.length > 0 
-        ? `Explore ${activeEvents.length} upcoming tech events and workshops at CITC. Join hackathons, coding competitions, seminars, and networking sessions to enhance your tech skills.`
-        : seoData.description!;
-    const ogImage = activeEvents.length > 0 ? activeEvents[0].image : seoData.ogImage!;
-    
-    const metaTags = getMetaTags({
-        title: seoData.title!,
-        description: description,
-        url: pageUrl,
-        image: ogImage,
-        keywords: seoData.keywords,
-    });
-
-    // ItemList Schema for events
-    const eventsSchema = {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "CITC Events",
-        "description": "List of tech events and workshops organized by CITC",
-        "itemListElement": eventData.events.map((event, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "item": getEventSchema(event)
-        }))
-    };
-
     return (<>
-        <Helmet>
-            {/* Primary Meta Tags */}
-            <title>{metaTags.title}</title>
-            <meta name="title" content={metaTags.meta.title} />
-            <meta name="description" content={metaTags.meta.description} />
-            <link rel="canonical" href={pageUrl} />
-            
-            {/* Open Graph / Facebook */}
-            <meta property="og:type" content={metaTags.og.type} />
-            <meta property="og:url" content={metaTags.og.url} />
-            <meta property="og:title" content={metaTags.og.title} />
-            <meta property="og:description" content={metaTags.og.description} />
-            <meta property="og:image" content={metaTags.og.image} />
-            <meta property="og:site_name" content={metaTags.og.siteName} />
-            
-            {/* Twitter */}
-            <meta name="twitter:card" content={metaTags.twitter.card} />
-            <meta name="twitter:url" content={metaTags.twitter.url} />
-            <meta name="twitter:title" content={metaTags.twitter.title} />
-            <meta name="twitter:description" content={metaTags.twitter.description} />
-            <meta name="twitter:image" content={metaTags.twitter.image} />
-            
-            {/* Additional SEO */}
-            <meta name="keywords" content={metaTags.meta.keywords} />
-            <meta name="author" content={metaTags.meta.author} />
-            <meta name="robots" content={metaTags.meta.robots} />
-        </Helmet>
-
-        <script type="application/ld+json">
-            {JSON.stringify(eventsSchema)}
-        </script>
-
         {/* <div className='h-10'></div> */}
-        <div className="min-h-screen pt-40 pb-20 bg-white dark:bg-[#0f172a] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] transition-colors duration-300">
+        <div className="min-h-screen pt-24 pb-20 bg-white dark:bg-[#0f172a] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] transition-colors duration-300">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-cyan-400 dark:from-white dark:via-cyan-100 dark:to-cyan-200 mb-6">
