@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import MemberCard from '../components/MemberCard';
 import type { TeamData } from '../types';
 import { getPageSEO, getMetaTags, SITE_CONFIG } from '../config/seoData';
@@ -103,33 +102,31 @@ const TeamPage = () => {
 
     return (
         <>
-            <Helmet>
-                {/* Primary Meta Tags */}
-                <title>{metaTags.title}</title>
-                <meta name="title" content={metaTags.meta.title} />
-                <meta name="description" content={metaTags.meta.description} />
-                <link rel="canonical" href={pageUrl} />
-                
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content={metaTags.og.type} />
-                <meta property="og:url" content={metaTags.og.url} />
-                <meta property="og:title" content={metaTags.og.title} />
-                <meta property="og:description" content={metaTags.og.description} />
-                <meta property="og:image" content={metaTags.og.image} />
-                <meta property="og:site_name" content={metaTags.og.siteName} />
-                
-                {/* Twitter */}
-                <meta name="twitter:card" content={metaTags.twitter.card} />
-                <meta name="twitter:url" content={metaTags.twitter.url} />
-                <meta name="twitter:title" content={metaTags.twitter.title} />
-                <meta name="twitter:description" content={metaTags.twitter.description} />
-                <meta name="twitter:image" content={metaTags.twitter.image} />
-                
-                {/* Additional SEO */}
-                <meta name="keywords" content={metaTags.meta.keywords} />
-                <meta name="author" content={metaTags.meta.author} />
-                <meta name="robots" content={metaTags.meta.robots} />
-            </Helmet>
+            {/* Primary Meta Tags */}
+            <title>{metaTags.title}</title>
+            <meta name="title" content={metaTags.meta.title} />
+            <meta name="description" content={metaTags.meta.description} />
+            <link rel="canonical" href={pageUrl} />
+            
+            {/* Open Graph / Facebook */}
+            <meta property="og:type" content={metaTags.og.type} />
+            <meta property="og:url" content={metaTags.og.url} />
+            <meta property="og:title" content={metaTags.og.title} />
+            <meta property="og:description" content={metaTags.og.description} />
+            <meta property="og:image" content={metaTags.og.image} />
+            <meta property="og:site_name" content={metaTags.og.siteName} />
+            
+            {/* Twitter */}
+            <meta name="twitter:card" content={metaTags.twitter.card} />
+            <meta name="twitter:url" content={metaTags.twitter.url} />
+            <meta name="twitter:title" content={metaTags.twitter.title} />
+            <meta name="twitter:description" content={metaTags.twitter.description} />
+            <meta name="twitter:image" content={metaTags.twitter.image} />
+            
+            {/* Additional SEO */}
+            <meta name="keywords" content={metaTags.meta.keywords} />
+            <meta name="author" content={metaTags.meta.author} />
+            <meta name="robots" content={metaTags.meta.robots} />
 
             <div className="min-h-screen pt-40 pb-20 bg-white dark:bg-[#0f172a] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] transition-colors duration-300">
                 {/* Organization Schema */}

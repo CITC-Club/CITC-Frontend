@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Calendar, History } from 'lucide-react';
 import EventCard from '../components/EventCard';
 import type { EventData } from '../types';
@@ -79,33 +78,31 @@ const EventsPage = () => {
     };
 
     return (<>
-        <Helmet>
-            {/* Primary Meta Tags */}
-            <title>{metaTags.title}</title>
-            <meta name="title" content={metaTags.meta.title} />
-            <meta name="description" content={metaTags.meta.description} />
-            <link rel="canonical" href={pageUrl} />
-            
-            {/* Open Graph / Facebook */}
-            <meta property="og:type" content={metaTags.og.type} />
-            <meta property="og:url" content={metaTags.og.url} />
-            <meta property="og:title" content={metaTags.og.title} />
-            <meta property="og:description" content={metaTags.og.description} />
-            <meta property="og:image" content={metaTags.og.image} />
-            <meta property="og:site_name" content={metaTags.og.siteName} />
-            
-            {/* Twitter */}
-            <meta name="twitter:card" content={metaTags.twitter.card} />
-            <meta name="twitter:url" content={metaTags.twitter.url} />
-            <meta name="twitter:title" content={metaTags.twitter.title} />
-            <meta name="twitter:description" content={metaTags.twitter.description} />
-            <meta name="twitter:image" content={metaTags.twitter.image} />
-            
-            {/* Additional SEO */}
-            <meta name="keywords" content={metaTags.meta.keywords} />
-            <meta name="author" content={metaTags.meta.author} />
-            <meta name="robots" content={metaTags.meta.robots} />
-        </Helmet>
+        {/* Primary Meta Tags */}
+        <title>{metaTags.title}</title>
+        <meta name="title" content={metaTags.meta.title} />
+        <meta name="description" content={metaTags.meta.description} />
+        <link rel="canonical" href={pageUrl} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content={metaTags.og.type} />
+        <meta property="og:url" content={metaTags.og.url} />
+        <meta property="og:title" content={metaTags.og.title} />
+        <meta property="og:description" content={metaTags.og.description} />
+        <meta property="og:image" content={metaTags.og.image} />
+        <meta property="og:site_name" content={metaTags.og.siteName} />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content={metaTags.twitter.card} />
+        <meta name="twitter:url" content={metaTags.twitter.url} />
+        <meta name="twitter:title" content={metaTags.twitter.title} />
+        <meta name="twitter:description" content={metaTags.twitter.description} />
+        <meta name="twitter:image" content={metaTags.twitter.image} />
+        
+        {/* Additional SEO */}
+        <meta name="keywords" content={metaTags.meta.keywords} />
+        <meta name="author" content={metaTags.meta.author} />
+        <meta name="robots" content={metaTags.meta.robots} />
 
         <script type="application/ld+json">
             {JSON.stringify(eventsSchema)}
