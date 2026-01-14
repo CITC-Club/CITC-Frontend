@@ -93,15 +93,17 @@ const Navbar = () => {
                             {/* Action Button & Theme Toggle */}
                             <div className="hidden md:flex items-center gap-4">
                                 <ThemeToggle />
-                                <Link
-                                    to="/register/ai"
+                                <a
+                                    href="https://forms.gle/5zHdTCPAGnkakToC7"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group relative px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-full overflow-hidden hover:bg-slate-800 dark:hover:bg-cyan-50 transition-colors"
                                 >
                                     <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-300 to-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
                                     <span className="relative flex items-center gap-2">
                                         Join Club <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </span>
-                                </Link>
+                                </a>
                             </div>
 
                             {/* Mobile Menu Button */}
@@ -164,13 +166,15 @@ const Navbar = () => {
                     </div>
 
                     <div className="mt-auto">
-                        <Link
-                            to="/register/ai"
+                        <a
+                            href="https://forms.gle/5zHdTCPAGnkakToC7"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/25 w-full text-center"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Join Club Now
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
