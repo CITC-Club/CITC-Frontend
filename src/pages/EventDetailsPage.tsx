@@ -130,41 +130,10 @@ const EventDetailsPage = () => {
                 </div>
 
                 <div className="container mx-auto px-4 md:px-6 py-12">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                        {/* Main Content */}
-                        <div className="lg:col-span-2 space-y-8">
-                            <div className="bg-white dark:bg-slate-900/50 rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-white/10">
-                                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 pb-3 border-b border-slate-200 dark:border-slate-700">About the Event</h2>
-                                <div className="markdown-content">
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                        {event.description}
-                                    </ReactMarkdown>
-                                </div>
-                            </div>
-
-                            {/* Gallery Section for Past Events */}
-                            {event.gallery && event.gallery.length > 0 && (
-                                <div className="pt-8 border-t border-slate-200 dark:border-slate-800">
-                                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Event Gallery</h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        {event.gallery.map((img, index) => (
-                                            <div key={index} className="relative aspect-video rounded-xl overflow-hidden group">
-                                                <img
-                                                    src={img}
-                                                    alt={`Gallery ${index + 1}`}
-                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                                />
-                                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Sidebar Info */}
-                        <div className="space-y-6">
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-white/10 sticky top-24">
+                    <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12">
+                        {/* Sidebar Info - Moved to top on mobile */}
+                        <div className="order-1 lg:order-2 space-y-6">
+                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-white/10 sticky top-24 shadow-sm dark:shadow-none">
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Event Details</h3>
 
                                 <div className="space-y-4">
@@ -221,6 +190,37 @@ const EventDetailsPage = () => {
                                     </div>
                                 )}
                             </div>
+                        </div>
+
+                        {/* Main Content - Moves below details on mobile */}
+                        <div className="order-2 lg:order-1 lg:col-span-2 space-y-8">
+                            <div className="bg-white dark:bg-slate-900/50 rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
+                                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 pb-3 border-b border-slate-200 dark:border-slate-700">About the Event</h2>
+                                <div className="markdown-content">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                        {event.description}
+                                    </ReactMarkdown>
+                                </div>
+                            </div>
+
+                            {/* Gallery Section for Past Events */}
+                            {event.gallery && event.gallery.length > 0 && (
+                                <div className="pt-8 border-t border-slate-200 dark:border-slate-800">
+                                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Event Gallery</h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {event.gallery.map((img, index) => (
+                                            <div key={index} className="relative aspect-video rounded-xl overflow-hidden group">
+                                                <img
+                                                    src={img}
+                                                    alt={`Gallery ${index + 1}`}
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                />
+                                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

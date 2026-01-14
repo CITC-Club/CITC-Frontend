@@ -56,9 +56,9 @@ const Navbar = () => {
                 <div className="container mx-auto px-4 md:px-6">
                     {/* Desktop & Mobile Navbar Container */}
                     <div
-                        className={`mx-auto max-w-7xl transition-all duration-500 relative ring-1 ring-rose-200 dark:ring-rose-900/30 ${isMobileMenuOpen ? 'rounded-[2.5rem] bg-white dark:bg-slate-900 shadow-2xl' : 'rounded-full'
+                        className={`mx-auto max-w-7xl transition-all duration-500 relative ring-1 ${isMobileMenuOpen ? 'rounded-[2.5rem] bg-white dark:bg-slate-900 shadow-2xl ring-blue-500/20 dark:ring-white/20' : 'rounded-full'
                             } ${isScrolled || isMobileMenuOpen
-                                ? 'bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl shadow-lg px-6 py-3'
+                                ? 'bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl shadow-lg px-6 py-3 ring-blue-500/10 dark:ring-white/20'
                                 : 'bg-transparent ring-transparent px-0 py-2'
                             }`}
                     >
@@ -108,7 +108,7 @@ const Navbar = () => {
                                     className="group relative px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-full overflow-hidden hover:bg-slate-800 dark:hover:bg-cyan-50 transition-colors"
                                 >
                                     <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-300 to-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
-                                    <span className="relative flex items-center gap-2">
+                                    <span className="test-join-us relative flex items-center gap-2">
                                         Join Club <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </span>
                                 </a>
@@ -179,55 +179,6 @@ const Navbar = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                 />
             )}
-
-            {/* Mobile Menu Sidebar (Drawer) */}
-            <div
-                className={`fixed top-0 right-0 bottom-0 z-[56] w-full max-w-xs bg-white dark:bg-[#0f172a] shadow-2xl transition-transform duration-500 ease-in-out md:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
-            >
-                <div className="flex flex-col h-full pt-28 px-8 pb-10">
-                    <div className="flex flex-col space-y-6">
-                        {navLinks.map((link) => (
-                            link.type === 'route' ? (
-                                <Link
-                                    key={link.name}
-                                    to={link.href}
-                                    className="text-xl font-bold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
-                                    onClick={() => {
-                                        setIsMobileMenuOpen(false);
-                                        if (link.name === 'Home') {
-                                            handleHomeClick();
-                                        }
-                                    }}
-                                >
-                                    {link.name}
-                                </Link>
-                            ) : (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-xl font-bold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    {link.name}
-                                </a>
-                            )
-                        ))}
-                    </div>
-
-                    <div className="mt-auto">
-                        <a
-                            href="https://forms.gle/5zHdTCPAGnkakToC7"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/25 w-full text-center"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            Join Club Now
-                        </a>
-                    </div>
-                </div>
-            </div>
         </>
     );
 };
