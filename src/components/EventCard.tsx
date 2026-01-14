@@ -46,7 +46,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
                             {event.title}
                         </h3>
                         <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4">
-                            {event.description}
+                            {event.description.replace(/[#*_\[\]()~`>]/g, '').substring(0, 150)}
                         </p>
                     </div>
 
