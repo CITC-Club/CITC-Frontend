@@ -1,8 +1,9 @@
 import { ArrowRight, Code2, Users, Calendar, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center pt-20 px-3 sm:px-4 overflow-hidden">
             {/* Dynamic Background */}
             <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
 
@@ -10,12 +11,12 @@ const Hero = () => {
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 animate-pulse" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse delay-1000" />
 
-            <div className="container relative z-10 mx-auto px-4">
-                <div className="flex flex-col items-center text-center space-y-10">
+            <div className="container relative z-10 mx-auto px-3 sm:px-4">
+                <div className="flex flex-col items-center text-center space-y-6 sm:space-y-10">
 
                     {/* Badge */}
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-100/50 dark:bg-cyan-950/30 border border-cyan-500/20 text-cyan-700 dark:text-cyan-400 text-sm font-medium animate-fade-in backdrop-blur-sm shadow-sm">
+                    <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-cyan-100/50 dark:bg-cyan-950/30 border border-cyan-500/20 text-cyan-700 dark:text-cyan-400 text-xs sm:text-sm font-medium animate-fade-in backdrop-blur-sm shadow-sm flex-wrap justify-center">
                         <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                         <span className="font-semibold">Innovate. Connect. Transform.</span>
                     </div>
@@ -52,12 +53,12 @@ const Hero = () => {
                                 Join the Club <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </span>
                         </a>
-                        <button className="px-8 py-4 text-slate-900 dark:text-white font-medium hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group">
+                        <Link to="/events" className="px-8 py-4 text-slate-900 dark:text-white font-medium hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group">
                             Explore Events
                             <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center group-hover:bg-cyan-100 dark:group-hover:bg-cyan-500/20 transition-colors">
                                 <ArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                             </div>
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Stats / Interactive Elements */}

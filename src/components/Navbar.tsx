@@ -15,6 +15,10 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleHomeClick = () => {
+        window.scrollTo(0, 0);
+    };
+
     const navLinks = [
         { name: 'Home', href: '/', type: 'route' },
         { name: 'About', href: '/#about', type: 'anchor' },
@@ -37,7 +41,7 @@ const Navbar = () => {
                     >
                         <div className="flex items-center justify-between">
                             {/* Logo */}
-                            <Link to="/" className="flex items-center gap-3 group">
+                            <Link to="/" className="flex items-center gap-3 group" onClick={handleHomeClick}>
                                 <div className={`relative flex items-center justify-center rounded-xl group-hover:scale-105 transition-all duration-300 ${isScrolled ? 'w-12 h-12' : 'w-24 h-24'}`}>
                                     <img src="/CITCLOGO.png" alt="CITC Logo" className={`object-contain transition-all duration-300 ${isScrolled ? 'w-full h-full' : 'w-full h-full'}`} />
                                 </div>
@@ -50,6 +54,7 @@ const Navbar = () => {
                                         <Link
                                             key={link.name}
                                             to={link.href}
+                                            onClick={link.name === 'Home' ? handleHomeClick : undefined}
                                             className="px-5 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/[0.05] rounded-full transition-all duration-300"
                                         >
                                             {link.name}
@@ -109,7 +114,12 @@ const Navbar = () => {
                                 key={link.name}
                                 to={link.href}
                                 className="text-2xl font-bold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
-                                onClick={() => setIsMobileMenuOpen(false)}
+                                onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    if (link.name === 'Home') {
+                                        handleHomeClick();
+                                    }
+                                }}
                             >
                                 {link.name}
                             </Link>
