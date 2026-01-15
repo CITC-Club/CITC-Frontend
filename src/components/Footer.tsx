@@ -10,12 +10,12 @@ const Footer = () => {
         facebook: Facebook,
     };
 
-    const navigationLinks = [
+    const navigationLinks: { name: string; path: string; external?: boolean }[] = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/#about' },
         { name: 'Events', path: '/events' },
         { name: 'Our Team', path: '/team' },
-        { name: 'Join Club', path: 'https://forms.gle/5zHdTCPAGnkakToC7', external: true },
+        { name: 'Join Club', path: '/join' },
     ];
 
     return (
