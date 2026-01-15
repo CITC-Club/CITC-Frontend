@@ -30,10 +30,10 @@ const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
                         <User className="w-24 h-24 text-slate-400 dark:text-slate-500" />
                     </div>
                 )}
-                
+
                 {/* Gradient Overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-                
+
                 {/* Social Links Overlay - appears on hover */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                     <div className="flex items-center gap-3">
