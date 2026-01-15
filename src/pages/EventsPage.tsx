@@ -38,7 +38,7 @@ const EventsPage = () => {
     }
 
     const runningEvents = eventData.events.filter(e => e.status === 'running');
-    const upcomingEvents = eventData.events.filter(e => e.status === 'upcoming'); // Treat upcoming as distinct or group with running? 
+    const upcomingEvents = eventData.events.filter(e => e.status === 'upcoming'); // Treat upcoming as distinct or group with running?
     // User asked for "running events" (implying active registration) and "past events".
     // I'll group 'running' and 'upcoming' into the top section if they have registration links, or just 'running' as requested.
     // Let's group 'running' and 'upcoming' as "Upcoming & Running".

@@ -12,7 +12,7 @@ function App() {
     <div className="min-h-screen bg-[var(--bg-primary)] transition-colors duration-300">
       <ScrollToTop />
       <Navbar />
-      <Routes>
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/events" element={<EventsPage />} />
