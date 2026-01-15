@@ -1,9 +1,14 @@
-import Hero from '../components/Hero';
-import Features from '../components/Features';
-import { getPageSEO, getOrganizationSchema, getWebsiteSchema, getMetaTags } from '../config/seoData';
+import { useEffect } from 'react';
+import { getPageSEO, getMetaTags } from '../config/seoData';
 
-const HomePage = () => {
-    const seoData = getPageSEO('home');
+interface TallyWindow extends Window {
+    Tally?: {
+        loadEmbeds: () => void;
+    };
+}
+
+const JoinClubPage = () => {
+    const seoData = getPageSEO('join');
     const pageUrl = typeof window !== 'undefined' ? window.location.href : seoData.url;
     const metaTags = getMetaTags({
         title: seoData.title!,
@@ -12,9 +17,26 @@ const HomePage = () => {
         image: seoData.ogImage!,
         keywords: seoData.keywords,
     });
-    
-    const organizationSchema = getOrganizationSchema();
-    const websiteSchema = getWebsiteSchema();
+
+    useEffect(() => {
+        // Load Tally embed script
+        const script = document.createElement('script');
+        script.src = 'https://tally.so/widgets/embed.js';
+        script.async = true;
+        script.onload = () => {
+            if (typeof window !== 'undefined' && (window as TallyWindow).Tally) {
+                (window as TallyWindow).Tally?.loadEmbeds();
+            }
+        };
+        document.body.appendChild(script);
+
+        return () => {
+            // Cleanup script if needed
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
 
     return (
         <>
@@ -44,19 +66,25 @@ const HomePage = () => {
             <meta name="author" content={metaTags.meta.author} />
             <meta name="robots" content={metaTags.meta.robots} />
 
-            <script type="application/ld+json">
-                {JSON.stringify(organizationSchema)}
-            </script>
-            <script type="application/ld+json">
-                {JSON.stringify(websiteSchema)}
-            </script>
-
-            <main>
-                <Hero />
-                <Features />
+            <main className="min-h-screen bg-white dark:bg-[#0f172a] transition-colors duration-300 flex items-center justify-center pt-24 px-4">
+                {/* Tally Form Embed */}
+                <div className="w-full max-w-2xl">
+                    <iframe
+                        data-tally-src="https://tally.so/embed/yP4Dep?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                        loading="lazy"
+                        width="100%"
+                        height="100%"
+                        frameBorder="0"
+                        marginHeight={0}
+                        marginWidth={0}
+                        title="💼 CITC Reserve"
+                        className="tally-embed rounded-2xl dark:invert"
+                        style={{ minHeight: '600px' }}
+                    />
+                </div>
             </main>
         </>
     );
 };
 
-export default HomePage;
+export default JoinClubPage;

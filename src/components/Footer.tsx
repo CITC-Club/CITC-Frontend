@@ -1,89 +1,126 @@
-import { Github, Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, Instagram, Facebook, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { SITE_CONFIG } from '../config/seoData';
 
 const Footer = () => {
+    const socialIcons = {
+        github: Github,
+        linkedin: Linkedin,
+        instagram: Instagram,
+        facebook: Facebook,
+    };
+
+    const navigationLinks: { name: string; path: string; external?: boolean }[] = [
+        { name: 'Home', path: '/' },
+        { name: 'About Us', path: '/#about' },
+        { name: 'Events', path: '/events' },
+        { name: 'Our Team', path: '/team' },
+        { name: 'Join Club', path: '/join' },
+    ];
+
     return (
-        <footer className="relative border-t border-white/5 bg-[#020617] pt-20 pb-10 overflow-hidden">
-            {/* Background Texture */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none" />
+        <footer className="relative border-t border-slate-200 dark:border-white/5 bg-white dark:bg-[#020617] pt-24 pb-12 overflow-hidden transition-colors duration-300">
+            {/* Background Texture & Gradients */}
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] dark:opacity-5 pointer-events-none" />
+            <div className="absolute -top-24 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute -bottom-24 right-1/4 w-96 h-96 bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
 
-                    {/* Brand */}
-                    <div className="space-y-6">
-                        <div>
-                            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-                                CITClub
-                            </h2>
-                            <p className="text-sm text-slate-500 font-mono mt-2">
-                                EST. 2026
-                            </p>
+                    <div className="space-y-8">
+                        <div className="group inline-block">
+                            <div className="flex items-center gap-3">
+                                <div className="relative w-40 h-40">
+                                    <img src="/CITCLOGOW.png" alt="CITC Logo Light" className="w-full h-full object-contain dark:hidden" />
+                                    <img src="/CITC_LOGOD.png" alt="CITC Logo Dark" className="w-full h-full object-contain hidden dark:block" />
+                                </div>
+                            </div>
+                                    <p className="text-[18px] font-mono font-bold tracking-[0.2em] text-cyan-600 dark:text-rose-500 uppercase">
+                                        EST. 2025
+                                    </p>
                         </div>
-                        <p className="text-slate-400 leading-relaxed">
-                            Empowering students at NCIT to innovate, collaborate, and build the future of technology.
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm">
+                            Fostering a culture of innovation and excellence in computer engineering at NCIT. Join us to transform ideas into reality.
                         </p>
-                        <div className="flex items-center gap-4">
-                            {[Github, Linkedin, Instagram].map((Icon, i) => (
-                                <a
-                                    key={i}
-                                    href="#"
-                                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-white/10 hover:text-white hover:scale-110 transition-all duration-300 border border-white/5"
-                                >
-                                    <Icon size={18} />
-                                </a>
-                            ))}
+                        <div className="flex items-center gap-3">
+                            {Object.entries(SITE_CONFIG.social).map(([platform, url]) => {
+                                const Icon = socialIcons[platform as keyof typeof socialIcons];
+                                if (!Icon) return null;
+                                return (
+                                    <a
+                                        key={platform}
+                                        href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-all duration-300 border border-slate-200 dark:border-white/5 shadow-sm"
+                                        aria-label={platform}
+                                    >
+                                        <Icon size={18} />
+                                    </a>
+                                );
+                            })}
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Navigation Section */}
                     <div>
-                        <h3 className="text-lg font-bold text-white mb-8">Navigation</h3>
+                        <h3 className="text-sm font-bold uppercase tracking-[0.1em] text-slate-900 dark:text-white mb-8 border-l-2 border-rose-500 pl-4">
+                            Navigation
+                        </h3>
                         <ul className="space-y-4">
-                            {['Home', 'About Us', 'Events', 'Our Team', 'Alumni'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-2 group w-fit">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 transition-colors" />
-                                        {item}
-                                    </a>
+                            {navigationLinks.map((link) => (
+                                <li key={link.name}>
+                                    {link.external ? (
+                                        <a
+                                            href={link.path}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-all flex items-center gap-2 group w-fit"
+                                        >
+                                            <ArrowRight className="w-3.5 h-3.5 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                                            {link.name}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            to={link.path}
+                                            className="text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-all flex items-center gap-2 group w-fit"
+                                        >
+                                            <ArrowRight className="w-3.5 h-3.5 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                                            {link.name}
+                                        </Link>
+                                    )}
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Resources */}
+                    {/* Contact Section */}
                     <div>
-                        <h3 className="text-lg font-bold text-white mb-8">Resources</h3>
-                        <ul className="space-y-4">
-                            {['Constitution', 'Code of Conduct', 'Project Showcase', 'Join Discord', 'Press Kit'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block">
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div>
-                        <h3 className="text-lg font-bold text-white mb-8">Get in Touch</h3>
+                        <h3 className="text-sm font-bold uppercase tracking-[0.1em] text-slate-900 dark:text-white mb-8 border-l-2 border-rose-500 pl-4">
+                            Get in Touch
+                        </h3>
                         <ul className="space-y-6">
                             <li className="flex items-start gap-4 text-slate-400 group">
-                                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-colors">
-                                    <Mail className="w-5 h-5 text-blue-400" />
+                                <div className="w-11 h-11 rounded-xl bg-cyan-500/10 dark:bg-cyan-500/5 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors border border-cyan-500/10 dark:border-cyan-500/20">
+                                    <Mail className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                                 </div>
-                                <div>
-                                    <span className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Email Us</span>
-                                    <a href="mailto:citc@ncit.edu.np" className="text-white hover:text-blue-400 transition-colors">citc@ncit.edu.np</a>
+                                <div className="space-y-1">
+                                    <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Email Address</span>
+                                    <a href={`mailto:${SITE_CONFIG.email}`} className="text-slate-700 dark:text-slate-200 hover:text-rose-500 dark:hover:text-rose-400 transition-colors font-medium">
+                                        {SITE_CONFIG.email}
+                                    </a>
                                 </div>
                             </li>
                             <li className="flex items-start gap-4 text-slate-400 group">
-                                <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20 transition-colors">
-                                    <MapPin className="w-5 h-5 text-emerald-400" />
+                                <div className="w-11 h-11 rounded-xl bg-orange-500/10 dark:bg-orange-500/5 flex items-center justify-center shrink-0 group-hover:bg-orange-500/20 transition-colors border border-orange-500/10 dark:border-orange-500/20">
+                                    <MapPin className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                 </div>
-                                <div>
-                                    <span className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Visit Us</span>
-                                    <span className="text-white block">NCIT, Balkumari, Lalitpur</span>
+                                <div className="space-y-1">
+                                    <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Our Location</span>
+                                    <span className="text-slate-700 dark:text-slate-200 font-medium leading-tight">
+                                        NCIT, Balkumari,<br />Lalitpur, Nepal
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -91,13 +128,16 @@ const Footer = () => {
 
                 </div>
 
-                <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                    {/* <p className="text-slate-500 text-sm">
-                        © {new Date().getFullYear()} CITC. Built with <span className="text-red-500 animate-pulse">❤</span> by the Tech Team.
-                    </p> */}
-                    <div className="flex items-center gap-6 text-sm text-slate-500">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                {/* Bottom Bar */}
+                <div className="pt-12 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <p className="text-slate-500 dark:text-slate-500 text-xs font-medium">
+                        © {new Date().getFullYear()} CITC. Crafted for Innovation.
+                    </p>
+                    <div className="flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                        <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Privacy</a>
+                        <a href="#" className="hover:text-white transition-colors">Terms</a>
+                        <div className="h-4 w-px bg-slate-200 dark:bg-white/10 hidden md:block" />
+                        {/* <span className="text-slate-300 dark:text-slate-700 hidden md:block">NCIT Tech Community</span> */}
                     </div>
                 </div>
             </div>
