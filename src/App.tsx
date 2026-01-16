@@ -1,20 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import BaseLayout from './components/BaseLayout';
 import HomePage from './pages/HomePage';
 import TeamPage from './pages/TeamPage';
 import EventsPage from './pages/EventsPage';
 import EventDetailsPage from './pages/EventDetailsPage';
 import AIRegistrationPage from './pages/AIRegistrationPage';
 import JoinClubPage from './pages/JoinClubPage';
-import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] transition-colors duration-300">
-      <ScrollToTop />
-      <Navbar />
-        <Routes>
+    <BaseLayout>
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/events" element={<EventsPage />} />
@@ -22,9 +18,9 @@ function App() {
         <Route path="/register/ai" element={<AIRegistrationPage />} />
         <Route path="/join" element={<JoinClubPage />} />
       </Routes>
-      <Footer />
-    </div>
+    </BaseLayout>
   );
 }
 
 export default App;
+

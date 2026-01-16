@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MemberCard from '../components/MemberCard';
 import type { TeamData } from '../types';
-import { getPageSEO, getMetaTags, SITE_CONFIG } from '../config/seoData';
+import { getPageSEO, getMetaTags, getTeamSchema } from '../config/seoData';
 
 const TeamPage = () => {
     const [teamData, setTeamData] = useState<TeamData | null>(null);
@@ -76,29 +76,8 @@ const TeamPage = () => {
         return grouped;
     };
 
-    // Generate Organization schema with all team members
-    const organizationSchema = teamData ? {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": SITE_CONFIG.fullName,
-        "alternateName": SITE_CONFIG.name,
-        "url": SITE_CONFIG.url,
-        "logo": SITE_CONFIG.logo,
-        "description": SITE_CONFIG.description,
-        "member": teamData.members.map(member => ({
-            "@type": "Person",
-            "name": member.name,
-            "email": member.email,
-            ...(member.photo && { "image": member.photo }),
-            ...(member.title && { "jobTitle": member.title }),
-            "sameAs": [
-                ...(member.socials?.github ? [member.socials.github] : []),
-                ...(member.socials?.linkedin ? [member.socials.linkedin] : []),
-                ...(member.socials?.instagram ? [member.socials.instagram] : []),
-                ...(member.socials?.website ? [member.socials.website] : [])
-            ].filter(Boolean)
-        }))
-    } : null;
+    // Generate Team/Organization schema with all team members using @graph
+    const teamSchema = teamData ? getTeamSchema(teamData.members) : null;
 
     return (
         <>
@@ -129,10 +108,10 @@ const TeamPage = () => {
             <meta name="robots" content={metaTags.meta.robots} />
 
             <div className="min-h-screen pt-40 pb-20 bg-white dark:bg-[#0f172a] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] transition-colors duration-300">
-                {/* Organization Schema */}
-                {organizationSchema && (
+                {/* Team Schema */}
+                {teamSchema && (
                     <script type="application/ld+json">
-                        {JSON.stringify(organizationSchema)}
+                        {JSON.stringify(teamSchema)}
                     </script>
                 )}
 
