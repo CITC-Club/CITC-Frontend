@@ -33,6 +33,7 @@ const Hero = () => {
                                 width="240"
                                 height="280"
                                 className="w-12 md:w-16 lg:w-20 shrink-0"
+                                fetchPriority="high"
                             />
                         </span>
 

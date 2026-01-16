@@ -5,9 +5,11 @@ import { getPersonSchema } from '../config/seoData';
 
 interface MemberCardProps {
     member: Member;
+    priority?: boolean;
 }
 
-const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
+const MemberCard: React.FC<MemberCardProps> = ({ member, priority = false }) => {
+    const [isLoaded, setIsLoaded] = React.useState(false);
     // Generate Person schema for SEO using centralized function
     const personSchema = getPersonSchema(member);
 
@@ -18,13 +20,24 @@ const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
                 {JSON.stringify(personSchema)}
             </script>
             {/* Image Container with aspect ratio */}
-            <div className="relative aspect-[3/4] overflow-hidden bg-slate-200 dark:bg-slate-700">
+            <div className={`relative aspect-[3/4] overflow-hidden ${!isLoaded && member.photo ? 'animate-pulse bg-cyan-500/10' : 'bg-slate-200 dark:bg-slate-700'}`}>
                 {member.photo ? (
-                    <img
-                        src={member.photo}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                    />
+                    <>
+                        {/* Hero-style Placeholder/Glow */}
+                        {!isLoaded && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-slate-100 dark:bg-slate-800">
+                                <div className="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin" />
+                            </div>
+                        )}
+                        <img
+                            src={member.photo}
+                            alt={member.name}
+                            onLoad={() => setIsLoaded(true)}
+                            loading={priority ? "eager" : "lazy"}
+                            fetchPriority={priority ? "high" : "auto"}
+                            className={`w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                        />
+                    </>
                 ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-700 dark:to-slate-800">
                         <User className="w-24 h-24 text-slate-400 dark:text-slate-500" />
