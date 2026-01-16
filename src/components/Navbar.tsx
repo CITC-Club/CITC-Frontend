@@ -66,8 +66,8 @@ const Navbar = () => {
                             {/* Logo */}
                             <Link to="/" className="flex items-center gap-3 group shrink-0" onClick={handleHomeClick}>
                                 <div className={`relative flex items-center justify-center transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'w-10 h-10' : 'w-20 h-20'}`}>
-                                    <img src="/CITCLOGOW.png" alt="CITC Logo Light" className="w-full h-full object-contain dark:hidden" />
-                                    <img src="/CITC_LOGOD.png" alt="CITC Logo Dark" className="w-full h-full object-contain hidden dark:block" />
+                                    <img src="/CITCLOGOW.webp" alt="CITC Logo Light" width="480" height="209" className="w-full h-full object-contain dark:hidden" />
+                                    <img src="/CITC_LOGOD.webp" alt="CITC Logo Dark" width="480" height="209" className="w-full h-full object-contain hidden dark:block" />
                                 </div>
                             </Link>
 

@@ -6,6 +6,7 @@ on:
 
 jobs:
   ci:
+    if: github.repository == 'CITC-Club/CITC-Frontend'
     name: CI on Node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
@@ -32,7 +33,7 @@ jobs:
       - name: Install dependencies
         id: install
         run: |
-          npm install
+          npm ci
 
       - name: Run linter
         if: steps.scripts.outputs.has_lint == 'true'
