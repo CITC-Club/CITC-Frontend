@@ -9,7 +9,7 @@ interface TallyWindow extends Window {
 }
 
 const AIRegistrationPage = () => {
-  const TARGET_DATE = new Date('2026-01-18T00:00:00+05:45').getTime();
+  const TARGET_DATE = new Date('2026-01-17T00:00:00+05:45').getTime();
 
   const [isExpired, setIsExpired] = useState(false);
   const [countdown, setCountdown] = useState({
@@ -168,7 +168,7 @@ const AIRegistrationPage = () => {
             <div className="backdrop-blur-sm bg-white/80 dark:bg-slate-900/80 border border-slate-200/50 dark:border-slate-700/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl">
               <div className="max-w-2xl mx-auto">
                 <iframe
-                  data-tally-src="https://tally.so/embed/VLPMjg?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                  data-tally-src="https://tally.so/embed/Gxpq6L?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                   loading="lazy"
                   width="100%"
                   height="600"
