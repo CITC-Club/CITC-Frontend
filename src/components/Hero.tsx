@@ -28,9 +28,12 @@ const Hero = () => {
                             <span>Computer Engineering Innovation</span>
 
                             <img
-                                src="./&nobg.png"
+                                src="./&nobg.webp"
                                 alt="&"
+                                width="240"
+                                height="280"
                                 className="w-12 md:w-16 lg:w-20 shrink-0"
+                                fetchPriority="high"
                             />
                         </span>
 

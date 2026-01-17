@@ -109,14 +109,25 @@ export const getPersonSchema = (member: {
         twitter?: string;
         website?: string;
     };
-}) => ({
-    "@context": "https://schema.org",
+}, includeContext = true) => ({
+    ...(includeContext && { "@context": "https://schema.org" }),
     "@type": "Person",
+    "@id": `${SITE_CONFIG.url}/team#${member.name.toLowerCase().replace(/\s+/g, '-')}`,
     "name": member.name,
     "email": member.email,
+    "url": `${SITE_CONFIG.url}/team`,
     ...(member.photo && { "image": member.photo }),
     ...(member.title && { "jobTitle": member.title }),
-    ...(member.department && { "affiliation": member.department }),
+    "affiliation": {
+        "@type": "Organization",
+        "name": SITE_CONFIG.fullName,
+        "url": SITE_CONFIG.url
+    },
+    "worksFor": {
+        "@type": "Organization",
+        "name": SITE_CONFIG.fullName,
+        "url": SITE_CONFIG.url
+    },
     "sameAs": [
         ...(member.socials?.github ? [member.socials.github] : []),
         ...(member.socials?.linkedin ? [member.socials.linkedin] : []),
@@ -125,6 +136,14 @@ export const getPersonSchema = (member: {
         ...(member.socials?.twitter ? [member.socials.twitter] : []),
         ...(member.socials?.website ? [member.socials.website] : [])
     ].filter(Boolean)
+});
+
+export const getTeamSchema = (members: any[]) => ({
+    "@context": "https://schema.org",
+    "@graph": [
+        getOrganizationSchema(),
+        ...members.map(member => getPersonSchema(member, false))
+    ]
 });
 
 export const getEventSchema = (event: {
