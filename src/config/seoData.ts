@@ -57,7 +57,7 @@ export const SEO_PAGES = {
 export const getPageSEO = (page: keyof typeof SEO_PAGES) => {
     const pageData = SEO_PAGES[page];
     const baseUrl = SITE_CONFIG.url;
-    
+
     return {
         ...pageData,
         url: `${baseUrl}${pageData.path}`,
@@ -109,14 +109,25 @@ export const getPersonSchema = (member: {
         twitter?: string;
         website?: string;
     };
-}) => ({
-    "@context": "https://schema.org",
+}, includeContext = true) => ({
+    ...(includeContext && { "@context": "https://schema.org" }),
     "@type": "Person",
+    "@id": `${SITE_CONFIG.url}/team#${member.name.toLowerCase().replace(/\s+/g, '-')}`,
     "name": member.name,
     "email": member.email,
+    "url": `${SITE_CONFIG.url}/team`,
     ...(member.photo && { "image": member.photo }),
     ...(member.title && { "jobTitle": member.title }),
-    ...(member.department && { "affiliation": member.department }),
+    "affiliation": {
+        "@type": "Organization",
+        "name": SITE_CONFIG.fullName,
+        "url": SITE_CONFIG.url
+    },
+    "worksFor": {
+        "@type": "Organization",
+        "name": SITE_CONFIG.fullName,
+        "url": SITE_CONFIG.url
+    },
     "sameAs": [
         ...(member.socials?.github ? [member.socials.github] : []),
         ...(member.socials?.linkedin ? [member.socials.linkedin] : []),
@@ -125,6 +136,14 @@ export const getPersonSchema = (member: {
         ...(member.socials?.twitter ? [member.socials.twitter] : []),
         ...(member.socials?.website ? [member.socials.website] : [])
     ].filter(Boolean)
+});
+
+export const getTeamSchema = (members: any[]) => ({
+    "@context": "https://schema.org",
+    "@graph": [
+        getOrganizationSchema(),
+        ...members.map(member => getPersonSchema(member, false))
+    ]
 });
 
 export const getEventSchema = (event: {
@@ -152,8 +171,8 @@ export const getEventSchema = (event: {
             "addressCountry": SITE_CONFIG.location.country
         }
     },
-    "eventStatus": event.status === 'running' || event.status === 'upcoming' 
-        ? "https://schema.org/EventScheduled" 
+    "eventStatus": event.status === 'running' || event.status === 'upcoming'
+        ? "https://schema.org/EventScheduled"
         : "https://schema.org/EventPostponed",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "organizer": {

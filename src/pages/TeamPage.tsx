@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MemberCard from '../components/MemberCard';
 import type { TeamData } from '../types';
-import { getPageSEO, getMetaTags, SITE_CONFIG } from '../config/seoData';
+import { getPageSEO, getMetaTags, getTeamSchema } from '../config/seoData';
 
 const TeamPage = () => {
     const [teamData, setTeamData] = useState<TeamData | null>(null);
@@ -76,29 +76,8 @@ const TeamPage = () => {
         return grouped;
     };
 
-    // Generate Organization schema with all team members
-    const organizationSchema = teamData ? {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": SITE_CONFIG.fullName,
-        "alternateName": SITE_CONFIG.name,
-        "url": SITE_CONFIG.url,
-        "logo": SITE_CONFIG.logo,
-        "description": SITE_CONFIG.description,
-        "member": teamData.members.map(member => ({
-            "@type": "Person",
-            "name": member.name,
-            "email": member.email,
-            ...(member.photo && { "image": member.photo }),
-            ...(member.title && { "jobTitle": member.title }),
-            "sameAs": [
-                ...(member.socials?.github ? [member.socials.github] : []),
-                ...(member.socials?.linkedin ? [member.socials.linkedin] : []),
-                ...(member.socials?.instagram ? [member.socials.instagram] : []),
-                ...(member.socials?.website ? [member.socials.website] : [])
-            ].filter(Boolean)
-        }))
-    } : null;
+    // Generate Team/Organization schema with all team members using @graph
+    const teamSchema = teamData ? getTeamSchema(teamData.members) : null;
 
     return (
         <>
@@ -107,7 +86,7 @@ const TeamPage = () => {
             <meta name="title" content={metaTags.meta.title} />
             <meta name="description" content={metaTags.meta.description} />
             <link rel="canonical" href={pageUrl} />
-            
+
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={metaTags.og.type} />
             <meta property="og:url" content={metaTags.og.url} />
@@ -115,24 +94,24 @@ const TeamPage = () => {
             <meta property="og:description" content={metaTags.og.description} />
             <meta property="og:image" content={metaTags.og.image} />
             <meta property="og:site_name" content={metaTags.og.siteName} />
-            
+
             {/* Twitter */}
             <meta name="twitter:card" content={metaTags.twitter.card} />
             <meta name="twitter:url" content={metaTags.twitter.url} />
             <meta name="twitter:title" content={metaTags.twitter.title} />
             <meta name="twitter:description" content={metaTags.twitter.description} />
             <meta name="twitter:image" content={metaTags.twitter.image} />
-            
+
             {/* Additional SEO */}
             <meta name="keywords" content={metaTags.meta.keywords} />
             <meta name="author" content={metaTags.meta.author} />
             <meta name="robots" content={metaTags.meta.robots} />
 
             <div className="min-h-screen pt-40 pb-20 bg-white dark:bg-[#0f172a] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] transition-colors duration-300">
-                {/* Organization Schema */}
-                {organizationSchema && (
+                {/* Team Schema */}
+                {teamSchema && (
                     <script type="application/ld+json">
-                        {JSON.stringify(organizationSchema)}
+                        {JSON.stringify(teamSchema)}
                     </script>
                 )}
 
@@ -196,13 +175,17 @@ const TeamPage = () => {
                                     ) : (
                                         <div className={`
                                             grid gap-8
-                                            ${isSmallTeam 
-                                                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto' 
+                                            ${isSmallTeam
+                                                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto'
                                                 : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
                                             }
                                         `}>
-                                            {members.map((member) => (
-                                                <MemberCard key={member.id} member={member} />
+                                            {members.map((member, idx) => (
+                                                <MemberCard
+                                                    key={member.id}
+                                                    member={member}
+                                                    priority={team.id === 't_patron' || (team.id === 't_mentors_2025' && idx === 0)}
+                                                />
                                             ))}
                                         </div>
                                     )}

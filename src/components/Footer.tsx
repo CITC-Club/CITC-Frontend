@@ -10,12 +10,12 @@ const Footer = () => {
         facebook: Facebook,
     };
 
-    const navigationLinks = [
+    const navigationLinks: { name: string; path: string; external?: boolean }[] = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/#about' },
         { name: 'Events', path: '/events' },
         { name: 'Our Team', path: '/team' },
-        { name: 'Join Club', path: 'https://forms.gle/5zHdTCPAGnkakToC7', external: true },
+        { name: 'Join Club', path: '/join' },
     ];
 
     return (
@@ -32,13 +32,13 @@ const Footer = () => {
                         <div className="group inline-block">
                             <div className="flex items-center gap-3">
                                 <div className="relative w-40 h-40">
-                                    <img src="/CITCLOGOW.png" alt="CITC Logo Light" className="w-full h-full object-contain dark:hidden" />
-                                    <img src="/CITC_LOGOD.png" alt="CITC Logo Dark" className="w-full h-full object-contain hidden dark:block" />
+                                    <img src="/CITCLOGOW.webp" alt="CITC Logo Light" width="480" height="209" className="w-full h-full object-contain dark:hidden" />
+                                    <img src="/CITC_LOGOD.webp" alt="CITC Logo Dark" width="480" height="209" className="w-full h-full object-contain hidden dark:block" />
                                 </div>
                             </div>
-                                    <p className="text-[18px] font-mono font-bold tracking-[0.2em] text-cyan-600 dark:text-rose-500 uppercase">
-                                        EST. 2025
-                                    </p>
+                            <p className="text-[18px] font-mono font-bold tracking-[0.2em] text-cyan-600 dark:text-rose-500 uppercase">
+                                EST. 2025
+                            </p>
                         </div>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm">
                             Fostering a culture of innovation and excellence in computer engineering at NCIT. Join us to transform ideas into reality.

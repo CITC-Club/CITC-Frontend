@@ -66,8 +66,8 @@ const Navbar = () => {
                             {/* Logo */}
                             <Link to="/" className="flex items-center gap-3 group shrink-0" onClick={handleHomeClick}>
                                 <div className={`relative flex items-center justify-center transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'w-10 h-10' : 'w-20 h-20'}`}>
-                                    <img src="/CITCLOGOW.png" alt="CITC Logo Light" className="w-full h-full object-contain dark:hidden" />
-                                    <img src="/CITC_LOGOD.png" alt="CITC Logo Dark" className="w-full h-full object-contain hidden dark:block" />
+                                    <img src="/CITCLOGOW.webp" alt="CITC Logo Light" width="480" height="209" className="w-full h-full object-contain dark:hidden" fetchPriority="high" />
+                                    <img src="/CITC_LOGOD.webp" alt="CITC Logo Dark" width="480" height="209" className="w-full h-full object-contain hidden dark:block" fetchPriority="high" />
                                 </div>
                             </Link>
 
@@ -106,7 +106,7 @@ const Navbar = () => {
                                     className="group relative px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-full overflow-hidden hover:bg-slate-800 dark:hover:bg-cyan-50 transition-colors"
                                 >
                                     <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-300 to-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
-                                    <span className="test-join-us relative flex items-center gap-2">
+                                    <span className="relative flex items-center gap-2">
                                         Join Club <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </span>
                                 </Link>

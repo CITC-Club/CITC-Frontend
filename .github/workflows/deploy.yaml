@@ -7,6 +7,7 @@ on:
 
 jobs:
   deploy:
+    if: github.repository == 'CITC-Club/CITC-Frontend'
     runs-on: self-hosted
 
     steps:
@@ -18,12 +19,12 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '24.x'
 
       # 3. Install dependencies and build
       - name: Build dist folder
         run: |
-          npm install
+          npm ci
           npm run build
 
       # 4. Sync dist to the directory Docker expects
