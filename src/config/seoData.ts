@@ -57,7 +57,7 @@ export const SEO_PAGES = {
 export const getPageSEO = (page: keyof typeof SEO_PAGES) => {
     const pageData = SEO_PAGES[page];
     const baseUrl = SITE_CONFIG.url;
-    
+
     return {
         ...pageData,
         url: `${baseUrl}${pageData.path}`,
@@ -152,8 +152,8 @@ export const getEventSchema = (event: {
             "addressCountry": SITE_CONFIG.location.country
         }
     },
-    "eventStatus": event.status === 'running' || event.status === 'upcoming' 
-        ? "https://schema.org/EventScheduled" 
+    "eventStatus": event.status === 'running' || event.status === 'upcoming'
+        ? "https://schema.org/EventScheduled"
         : "https://schema.org/EventPostponed",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "organizer": {

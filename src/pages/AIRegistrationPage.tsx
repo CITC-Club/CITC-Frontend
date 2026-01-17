@@ -99,8 +99,8 @@ const AIRegistrationPage = () => {
           </h1>
 
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto px-4">
-            {!isExpired 
-              ? 'Prepare yourself. The AI Image Prompting challenge begins soon.' 
+            {!isExpired
+              ? 'Prepare yourself. The AI Image Prompting challenge begins soon.'
               : 'Register now for the AI Image Prompting Competition 2026.'}
           </p>
 

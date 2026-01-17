@@ -39,7 +39,7 @@ const EventsPage = () => {
     }
 
     const runningEvents = eventData.events.filter(e => e.status === 'running');
-    const upcomingEvents = eventData.events.filter(e => e.status === 'upcoming'); // Treat upcoming as distinct or group with running? 
+    const upcomingEvents = eventData.events.filter(e => e.status === 'upcoming'); // Treat upcoming as distinct or group with running?
     // User asked for "running events" (implying active registration) and "past events".
     // I'll group 'running' and 'upcoming' into the top section if they have registration links, or just 'running' as requested.
     // Let's group 'running' and 'upcoming' as "Upcoming & Running".
@@ -51,11 +51,11 @@ const EventsPage = () => {
 
     const seoData = getPageSEO('events');
     const pageUrl = typeof window !== 'undefined' ? window.location.href : seoData.url;
-    const description = activeEvents.length > 0 
+    const description = activeEvents.length > 0
         ? `Explore ${activeEvents.length} upcoming tech events and workshops at CITC. Join hackathons, coding competitions, seminars, and networking sessions to enhance your tech skills.`
         : seoData.description!;
     const ogImage = activeEvents.length > 0 ? activeEvents[0].image : seoData.ogImage!;
-    
+
     const metaTags = getMetaTags({
         title: seoData.title!,
         description: description,
@@ -83,7 +83,7 @@ const EventsPage = () => {
         <meta name="title" content={metaTags.meta.title} />
         <meta name="description" content={metaTags.meta.description} />
         <link rel="canonical" href={pageUrl} />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content={metaTags.og.type} />
         <meta property="og:url" content={metaTags.og.url} />
@@ -91,14 +91,14 @@ const EventsPage = () => {
         <meta property="og:description" content={metaTags.og.description} />
         <meta property="og:image" content={metaTags.og.image} />
         <meta property="og:site_name" content={metaTags.og.siteName} />
-        
+
         {/* Twitter */}
         <meta name="twitter:card" content={metaTags.twitter.card} />
         <meta name="twitter:url" content={metaTags.twitter.url} />
         <meta name="twitter:title" content={metaTags.twitter.title} />
         <meta name="twitter:description" content={metaTags.twitter.description} />
         <meta name="twitter:image" content={metaTags.twitter.image} />
-        
+
         {/* Additional SEO */}
         <meta name="keywords" content={metaTags.meta.keywords} />
         <meta name="author" content={metaTags.meta.author} />

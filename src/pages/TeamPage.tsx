@@ -107,7 +107,7 @@ const TeamPage = () => {
             <meta name="title" content={metaTags.meta.title} />
             <meta name="description" content={metaTags.meta.description} />
             <link rel="canonical" href={pageUrl} />
-            
+
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={metaTags.og.type} />
             <meta property="og:url" content={metaTags.og.url} />
@@ -115,14 +115,14 @@ const TeamPage = () => {
             <meta property="og:description" content={metaTags.og.description} />
             <meta property="og:image" content={metaTags.og.image} />
             <meta property="og:site_name" content={metaTags.og.siteName} />
-            
+
             {/* Twitter */}
             <meta name="twitter:card" content={metaTags.twitter.card} />
             <meta name="twitter:url" content={metaTags.twitter.url} />
             <meta name="twitter:title" content={metaTags.twitter.title} />
             <meta name="twitter:description" content={metaTags.twitter.description} />
             <meta name="twitter:image" content={metaTags.twitter.image} />
-            
+
             {/* Additional SEO */}
             <meta name="keywords" content={metaTags.meta.keywords} />
             <meta name="author" content={metaTags.meta.author} />
@@ -196,8 +196,8 @@ const TeamPage = () => {
                                     ) : (
                                         <div className={`
                                             grid gap-8
-                                            ${isSmallTeam 
-                                                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto' 
+                                            ${isSmallTeam
+                                                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto'
                                                 : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
                                             }
                                         `}>
