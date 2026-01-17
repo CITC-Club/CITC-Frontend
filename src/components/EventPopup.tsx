@@ -37,8 +37,8 @@ const EventPopup = () => {
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center pointer-events-none p-4 sm:p-0">
             {/* Backdrop - optional, removing for non-intrusive feel, or keeping simplified */}
             {/* <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={handleClose} /> */}
-            
-            <div 
+
+            <div
                 className="pointer-events-auto relative w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-cyan-500/30 p-8 shadow-2xl dark:shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] transition-all duration-500 animate-in slide-in-from-bottom-10 fade-in zoom-in-95 sm:mb-8"
             >
                 {/* Background Decor */}
@@ -55,7 +55,7 @@ const EventPopup = () => {
                             </span>
                             <span className="text-xs font-semibold text-red-600 dark:text-red-400 tracking-wide uppercase">Happening Now</span>
                         </div>
-                        <button 
+                        <button
                             onClick={handleClose}
                             className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors p-1 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full"
                         >
@@ -65,9 +65,9 @@ const EventPopup = () => {
 
                     {/* Competiton Image */}
                     <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-slate-200 dark:border-cyan-500/20 shadow-lg group">
-                        <img 
-                            src="/media/ai-competition.jpg" 
-                            alt="AI Photo Generation Competition" 
+                        <img
+                            src="/media/ai-competition.jpg"
+                            alt="AI Photo Generation Competition"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-[#0f172a]/80 to-transparent opacity-60" />
@@ -90,7 +90,7 @@ const EventPopup = () => {
                     >
                         <span>Register Now</span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                        
+
                         {/* Shimmer effect */}
                         <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:animate-shimmer">
                             <div className="relative h-full w-8 bg-white/20"></div>
