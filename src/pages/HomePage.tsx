@@ -1,4 +1,5 @@
 import Hero from '../components/Hero';
+import EventPopup from '../components/EventPopup';
 import Features from '../components/Features';
 import { getPageSEO, getOrganizationSchema, getWebsiteSchema, getMetaTags } from '../config/seoData';
 
@@ -18,6 +19,7 @@ const HomePage = () => {
 
     return (
         <>
+            <EventPopup />
             {/* Primary Meta Tags */}
             <title>{metaTags.title}</title>
             <meta name="title" content={metaTags.meta.title} />
