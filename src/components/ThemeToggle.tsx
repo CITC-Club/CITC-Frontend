@@ -8,11 +8,6 @@ const ThemeToggle = () => {
             if (typeof storedPrefs === 'string') {
                 return storedPrefs;
             }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                return 'dark'; // Default to dark system preference initially, but user asked for white default.
-                // Actually, user said "keep the white mode as default".
-                // But if I want to respect system... let's stick to user request: default white.
-            }
         }
         return 'light';
     });
