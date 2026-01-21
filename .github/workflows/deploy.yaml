@@ -22,17 +22,6 @@ jobs:
           node-version: '24.x'
           cache: 'npm'
 
-      # 3. Cache node modules for faster builds
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-            ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       # 4. Install dependencies and build
       - name: Build dist folder
         run: |
@@ -50,9 +39,3 @@ jobs:
           cd ~/Server
           docker compose down frontend-citc
           docker compose up frontend-citc --build -d
-
-      # 7. Cleanup old images
-      - name: Cleanup Docker
-        run: |
-          docker image prune -f
-
