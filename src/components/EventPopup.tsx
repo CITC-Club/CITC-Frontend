@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X, ArrowRight } from 'lucide-react';
+import X from 'lucide-react/dist/esm/icons/x';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 
 const EventPopup = () => {
     const [isVisible, setIsVisible] = useState(false);

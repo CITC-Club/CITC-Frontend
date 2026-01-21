@@ -20,21 +20,39 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '24.x'
+          cache: 'npm'
 
-      # 3. Install dependencies and build
+      # 3. Cache node modules for faster builds
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 4. Install dependencies and build
       - name: Build dist folder
         run: |
           npm ci
           npm run build
 
-      # 4. Sync dist to the directory Docker expects
+      # 5. Sync dist to the directory Docker expects
       - name: Update Docker dist folder
         run: |
           rsync -av --delete dist/ ~/CITClub/frontend/dist/
 
-      # 5. Docker Compose deploy
+      # 6. Docker Compose deploy
       - name: Docker deploy
         run: |
           cd ~/Server
           docker compose down frontend-citc
           docker compose up frontend-citc --build -d
+
+      # 7. Cleanup old images
+      - name: Cleanup Docker
+        run: |
+          docker image prune -f
+

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Calendar, History } from 'lucide-react';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
+import History from 'lucide-react/dist/esm/icons/history';
 import EventCard from '../components/EventCard';
 import type { EventData } from '../types';
 import { getPageSEO, getMetaTags, getEventSchema } from '../config/seoData';

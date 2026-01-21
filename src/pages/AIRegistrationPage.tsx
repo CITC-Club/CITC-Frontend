@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import Sparkles from 'lucide-react/dist/esm/icons/sparkles';
 import Countdown from '../components/Countdown';
 
 interface TallyWindow extends Window {

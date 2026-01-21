@@ -24,6 +24,16 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Detect lint/build/test scripts
         id: scripts
         run: |
@@ -45,9 +55,18 @@ jobs:
         run: |
           npm run build
 
+      - name: Upload build artifacts
+        if: steps.scripts.outputs.has_build == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/
+          retention-days: 7
+
       - name: Success summary
         if: always()
         run: |
           echo "Package manager: npm"
           echo "Has lint script: ${{ steps.scripts.outputs.has_lint }}"
           echo "Has build script: ${{ steps.scripts.outputs.has_build }}"
+

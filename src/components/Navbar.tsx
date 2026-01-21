@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useCallback, memo } from 'react';
+import Menu from 'lucide-react/dist/esm/icons/menu';
+import X from 'lucide-react/dist/esm/icons/x';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 
-const Navbar = () => {
+const Navbar = memo(() => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -11,32 +13,41 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const currentScrollY = window.scrollY;
 
-            setIsScrolled(currentScrollY > 20);
+                    setIsScrolled(currentScrollY > 20);
 
-            if (currentScrollY > 100) {
-                if (currentScrollY > lastScrollY) {
-                    if (!isMobileMenuOpen) setIsVisible(false);
-                } else {
-                    setIsVisible(true);
-                }
-            } else {
-                setIsVisible(true);
+                    if (currentScrollY > 100) {
+                        if (currentScrollY > lastScrollY) {
+                            if (!isMobileMenuOpen) setIsVisible(false);
+                        } else {
+                            setIsVisible(true);
+                        }
+                    } else {
+                        setIsVisible(true);
+                    }
+
+                    setLastScrollY(currentScrollY);
+                    ticking = false;
+                });
+
+                ticking = true;
             }
-
-            setLastScrollY(currentScrollY);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY, isMobileMenuOpen]);
 
-    const handleHomeClick = () => {
+    const handleHomeClick = useCallback(() => {
         window.scrollTo(0, 0);
         setIsMobileMenuOpen(false);
-    };
+    }, []);
 
     const navLinks = [
         { name: 'Home', href: '/', type: 'route' },
@@ -177,6 +188,8 @@ const Navbar = () => {
             )}
         </>
     );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;

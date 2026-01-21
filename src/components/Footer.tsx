@@ -1,8 +1,15 @@
-import { Github, Linkedin, Instagram, Facebook, Mail, MapPin, ArrowRight } from 'lucide-react';
+import Github from 'lucide-react/dist/esm/icons/github';
+import Linkedin from 'lucide-react/dist/esm/icons/linkedin';
+import Instagram from 'lucide-react/dist/esm/icons/instagram';
+import Facebook from 'lucide-react/dist/esm/icons/facebook';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 import { SITE_CONFIG } from '../config/seoData';
 
-const Footer = () => {
+const Footer = memo(() => {
     const socialIcons = {
         github: Github,
         linkedin: Linkedin,
@@ -143,6 +150,8 @@ const Footer = () => {
             </div>
         </footer>
     );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

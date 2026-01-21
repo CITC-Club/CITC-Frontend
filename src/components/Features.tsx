@@ -1,6 +1,10 @@
-import { Lightbulb, Users, Telescope, ArrowUpRight } from 'lucide-react';
+import Lightbulb from 'lucide-react/dist/esm/icons/lightbulb';
+import Users from 'lucide-react/dist/esm/icons/users';
+import Telescope from 'lucide-react/dist/esm/icons/telescope';
+import ArrowUpRight from 'lucide-react/dist/esm/icons/arrow-up-right';
+import { memo } from 'react';
 
-const Features = () => {
+const Features = memo(() => {
     return (
         <section id="about" className="py-32 relative">
             <div className="container mx-auto px-4 md:px-6">
@@ -90,6 +94,8 @@ const Features = () => {
             </div>
         </section>
     );
-};
+});
+
+Features.displayName = 'Features';
 
 export default Features;

@@ -1,5 +1,10 @@
-import React from 'react';
-import { Github, Linkedin, Instagram, Mail, User, Globe } from 'lucide-react';
+import { memo, useState } from 'react';
+import Github from 'lucide-react/dist/esm/icons/github';
+import Linkedin from 'lucide-react/dist/esm/icons/linkedin';
+import Instagram from 'lucide-react/dist/esm/icons/instagram';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import User from 'lucide-react/dist/esm/icons/user';
+import Globe from 'lucide-react/dist/esm/icons/globe';
 import type { Member } from '../types';
 import { getPersonSchema } from '../config/seoData';
 
@@ -9,7 +14,7 @@ interface MemberCardProps {
 }
 
 const MemberCard: React.FC<MemberCardProps> = ({ member, priority = false }) => {
-    const [isLoaded, setIsLoaded] = React.useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     // Generate Person schema for SEO using centralized function
     const personSchema = getPersonSchema(member);
 
@@ -129,4 +134,4 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, priority = false }) => 
     );
 };
 
-export default MemberCard;
+export default memo(MemberCard);

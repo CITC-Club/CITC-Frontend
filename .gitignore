@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .env
 .idea
+.agents
+.claude
+.github/skills

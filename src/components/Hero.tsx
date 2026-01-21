@@ -1,7 +1,13 @@
-import { ArrowRight, Code2, Users, Calendar, Sparkles } from 'lucide-react';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import Code2 from 'lucide-react/dist/esm/icons/code-2';
+import Users from 'lucide-react/dist/esm/icons/users';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
+import Sparkles from 'lucide-react/dist/esm/icons/sparkles';
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
+import { preloadPage } from '../utils/performance';
 
-const Hero = () => {
+const Hero = memo(() => {
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-32 px-3 sm:px-4 overflow-hidden">
             {/* Dynamic Background */}
@@ -51,12 +57,22 @@ const Hero = () => {
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row items-center gap-6 animate-fade-in [animation-delay:600ms]">
-                        <Link to="/join" className="group relative px-8 py-4 bg-white text-slate-900 font-bold rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
+                        <Link
+                            to="/join"
+                            className="group relative px-8 py-4 bg-white text-slate-900 font-bold rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
+                            onMouseEnter={() => preloadPage('join')}
+                            onFocus={() => preloadPage('join')}
+                        >
                             <span className="relative flex items-center gap-2">
                                 Join the Club <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </span>
                         </Link>
-                        <Link to="/events" className="px-8 py-4 text-slate-900 dark:text-white font-medium hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group">
+                        <Link
+                            to="/events"
+                            className="px-8 py-4 text-slate-900 dark:text-white font-medium hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group"
+                            onMouseEnter={() => preloadPage('events')}
+                            onFocus={() => preloadPage('events')}
+                        >
                             Explore Events
                             <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center group-hover:bg-cyan-100 dark:group-hover:bg-cyan-500/20 transition-colors">
                                 <ArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
@@ -87,6 +103,8 @@ const Hero = () => {
             </div>
         </section>
     );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

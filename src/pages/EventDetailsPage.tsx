@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, MapPin, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import Clock from 'lucide-react/dist/esm/icons/clock';
+import ArrowLeft from 'lucide-react/dist/esm/icons/arrow-left';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { EventData, Event } from '../types';

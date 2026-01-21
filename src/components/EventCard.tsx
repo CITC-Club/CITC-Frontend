@@ -1,6 +1,9 @@
 
-import React from 'react';
-import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { memo } from 'react';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import Clock from 'lucide-react/dist/esm/icons/clock';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 import { Link } from 'react-router-dom';
 import type { Event } from '../types';
 
@@ -92,4 +95,4 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
     );
 };
 
-export default EventCard;
+export default memo(EventCard);
