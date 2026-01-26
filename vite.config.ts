@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import VitePluginSitemap from 'vite-plugin-sitemap'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import VitePluginSitemap from 'vite-plugin-sitemap';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -60,5 +60,5 @@ export default defineConfig({
     include: ['react', 'react-dom', 'react-router-dom'],
     exclude: ['lucide-react'], // Don't bundle lucide-react in dependencies
   },
-})
+});
 

@@ -10,7 +10,7 @@ interface TallyWindow extends Window {
 }
 
 const AIRegistrationPage = () => {
-  const TARGET_DATE = new Date('2026-01-18T00:00:00+05:45').getTime();
+  const TARGET_DATE = new Date('2026-01-29T10:00:00+05:45').getTime();
   const isExpired = Date.now() >= TARGET_DATE;
 
   useEffect(() => {
@@ -60,18 +60,18 @@ const AIRegistrationPage = () => {
           {/* Title & Description */}
           <div className="space-y-4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent px-2">
-              {!isExpired ? 'Competition Starts Officially' : 'The Arena is Open'}
+              {!isExpired ? 'Physical Round starts in' : 'The Arena is Open'}
             </h1>
 
-            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
+            {/* <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
               {!isExpired
                 ? 'Prepare yourself. The AI Image Prompting challenge begins soon.'
                 : 'Register now for the AI Image Prompting Competition 2026.'}
-            </p>
+            </p> */}
           </div>
 
           {/* Rulebook Link */}
-          <div>
+          {/* <div>
             <a
               href="https://drive.google.com/file/d/1huoBP5mijSC2-fGAy8J9cUhPGf_wu64S/view"
               target="_blank"
@@ -83,23 +83,23 @@ const AIRegistrationPage = () => {
               </svg>
               See the Rulebook
             </a>
-          </div>
+          </div> */}
 
           {/* New Countdown Component */}
           {!isExpired && (
             <div className="py-4">
               <Countdown
                 targetDate={TARGET_DATE}
-                description="Starts on 18 Jan 2026 — Sunday · 00:00 NPT"
+                description="Starts on 26 Jan 2026 — Thursday · 10:00 NPT"
               />
               <div className="flex flex-col items-center mt-8">
-                <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-cyan-500 to-transparent rounded-full" />
+                {/* <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-cyan-500 to-transparent rounded-full" /> */}
               </div>
             </div>
           )}
 
           {/* Tally Form */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto pt-8"
@@ -120,7 +120,7 @@ const AIRegistrationPage = () => {
                 />
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </div>

@@ -1,15 +1,17 @@
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import globals from 'globals';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import google from 'eslint-config-google';
+import { defineConfig, globalIgnores } from 'eslint/config';
+
+// Remove deprecated rules from Google config
+const { 'valid-jsdoc': _, 'require-jsdoc': __, ...googleRules } = google.rules;
 
 export default defineConfig([
-  // Ignore build outputs
   globalIgnores(['dist', 'build']),
 
-  // Apply to JS/TS/JSX/TSX files
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
 
@@ -20,7 +22,6 @@ export default defineConfig([
       parser: tsParser,
       parserOptions: {
         ecmaFeatures: { jsx: true },
-        // Use a dedicated tsconfig for ESLint so project references don't break parser
         project: './tsconfig.eslint.json',
       },
     },
@@ -35,32 +36,38 @@ export default defineConfig([
       react: { version: 'detect' },
     },
 
-    // Manually enable a compact set of rules similar to the classic "recommended" sets
-    // Avoid using `extends` with plugin configs to prevent nested-extends errors.
     rules: {
-      // React
+      /* ---------------- GOOGLE STYLE ---------------- */
+      ...googleRules,
+
+      /* ---------------- REACT ---------------- */
       'react/react-in-jsx-scope': 'off',
 
-      // Hooks
+      /* ---------------- HOOKS ---------------- */
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
 
-      // TypeScript / general
+      /* ---------------- TYPESCRIPT ---------------- */
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
 
-      // Stylistic / spacing rules added so linter reports common spacing problems
-      // These are core ESLint rules and don't require extra plugins.
-      'no-multi-spaces': 'error',
-      'no-trailing-spaces': 'error',
-      'comma-spacing': ['error', { before: false, after: true }],
-      'keyword-spacing': ['error', { before: true, after: true }],
-      'space-in-parens': ['error', 'never'],
-      'space-before-blocks': ['error', 'always'],
-      'no-mixed-spaces-and-tabs': 'error',
-      'eol-last': ['error', 'always'],
-
-      // You can add more rules here as needed (e.g. stylistic, a11y, etc.)
+      /* ---------------- SPACING (GOOGLE-COMPATIBLE) ---------------- */
+      'indent': ['error', 2, { SwitchCase: 1 }],
+      'max-len': ['error', { code: 450, ignoreUrls: true }],
+      'quotes': ['error', 'single', { allowTemplateLiterals: true }],
+      'object-curly-spacing': ['error', 'always'],
+      'array-bracket-spacing': ['error', 'never'],
     },
   },
-])
+  {
+    files: ['vite.config.*'],
+    rules: {
+      'max-len': 'off', // Disable max-len for Vite config
+      'no-unused-vars': 'off',
+      'new-cap': 'off', // Disable no-unused-vars for Vite config
+    },
+  },
+]);

@@ -42,7 +42,7 @@ import { useState } from 'react';
  */
 export function useIntersectionObserver(
   elementRef: React.RefObject<Element>,
-  { threshold = 0, root = null, rootMargin = '0%' }: IntersectionObserverInit = {}
+  { threshold = 0, root = null, rootMargin = '0%' }: IntersectionObserverInit = {},
 ): IntersectionObserverEntry | undefined {
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
 
@@ -55,7 +55,7 @@ export function useIntersectionObserver(
     const observerParams = { threshold, root, rootMargin };
     const observer = new IntersectionObserver(
       ([entry]) => setEntry(entry),
-      observerParams
+      observerParams,
     );
 
     observer.observe(node);
