@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import type { Event } from '../types';
 
 interface EventCardProps {
-    event: Event;
+  event: Event;
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
@@ -31,7 +31,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
             'bg-red-500/90 text-white animate-pulse' :
             'bg-slate-800/80 text-white backdrop-blur-sm'
           } `}>
-            {isRunning ? 'Register Now' : event.status}
+            {event.status}
           </div>
         </div>
 
@@ -77,7 +77,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
               to={event.registration_link.replace('https://citc.ncit.edu.np', '')}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-600 dark:bg-cyan-500 px-4 py-3 text-sm font-bold text-white transition-all hover:bg-cyan-700 dark:hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 relative z-10"
             >
-                            Register Now <ArrowRight className="w-4 h-4" />
+              Register Now <ArrowRight className="w-4 h-4" />
             </Link>
           ) : (
             <a
@@ -86,7 +86,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
               rel="noopener noreferrer"
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-600 dark:bg-cyan-500 px-4 py-3 text-sm font-bold text-white transition-all hover:bg-cyan-700 dark:hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 relative z-10"
             >
-                            Register Now <ArrowRight className="w-4 h-4" />
+              Register Now <ArrowRight className="w-4 h-4" />
             </a>
           )}
         </div>
