@@ -84,7 +84,7 @@ const Hero = memo(() => {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 pt-12 border-t border-slate-200 dark:border-white/5 animate-fade-in [animation-delay:800ms]">
             {[
               { label: 'Active Members', value: '15+', icon: Users },
-              { label: 'Events Hosted', value: '1+', icon: Calendar },
+              { label: 'Events Hosted', value: '3+', icon: Calendar },
               { label: 'Projects Built', value: '3+', icon: Code2 },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-2 group cursor-pointer">
