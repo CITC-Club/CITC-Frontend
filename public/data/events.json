@@ -6,15 +6,14 @@
       "date": "2026-02-02",
       "time": "6 Days (2 Hours Daily)",
       "location": "NCIT Room:125",
-      "description": "## Introduction\n\nThe **Computer Engineering Innovation and Tech Club (CITC)**, in collaboration with the Department of Computer Engineering, NCIT, presents **\"IoT Hardware Forge\"**, an intensive 6-day workshop designed to bridge the gap between theoretical knowledge and practical hardware implementation.\n\nFrom understanding basic sensors to deploying complex wireless systems, this workshop provides a hands-on roadmap for students interested in embedded systems and the Internet of Things.\n\n---\n\n## Workshop Highlights\n\n- **Hands-on with Hardware:** Work with Arduino, ESP32, and various sensors.\n- **Sensor Fundamentals:** Learn to interface digital and analog sensors.\n- **Wireless Communication:** Explore Wi-Fi and Bluetooth connectivity for IoT projects.\n- **IoT Expo:** Showcase your final integrated projects in a mini exhibition.\n\n---\n\n## Schedule Overview\n\n- **Day 1:** Kickoff & Sensor Fundamentals\n- **Day 2:** Output Systems & First Integration\n- **Day 3:** Wireless Communication (ESP32 Deep Dive)\n- **Day 4:** Integration Sprint (Project Building)\n- **Day 5:** Refinement & Rehearsal\n- **Day 6:** **IoT Expo** (Final Presentation)\n\n---\n\n## Eligibility & Registration\n\n- Open to all NCIT students.\n- **Project-based selection:** Participants must submit a project concept via the official form 3 days prior to the start.\n\n*Registration link will be updated soon. Stay tuned to CITC social media platforms.*",
-      "image": "/event/003/banner.png",
-      "status": "running",
+      "description": "## Introduction\n\nThe **Computer Engineering Innovation and Tech Club (CITC)**, in collaboration with the Department of Computer Engineering, NCIT, presents **\"IoT Hardware Workshop\"**, an intensive 6-day workshop designed to bridge the gap between theoretical knowledge and practical hardware implementation.\n\nFrom understanding basic sensors to deploying complex wireless systems, this workshop provides a hands-on roadmap for students interested in embedded systems and the Internet of Things.\n\n---\n\n## Workshop Highlights\n\n- **Hands-on with Hardware:** Work with Arduino, ESP32, and various sensors.\n- **Sensor Fundamentals:** Learn to interface digital and analog sensors.\n- **Wireless Communication:** Explore Wi-Fi and Bluetooth connectivity for IoT projects.\n- **IoT Expo:** Showcase your final integrated projects in a mini exhibition.\n\n---\n\n## Schedule Overview\n\n- **Day 1:** Kickoff & Sensor Fundamentals\n- **Day 2:** Output Systems & First Integration\n- **Day 3:** Wireless Communication (ESP32 Deep Dive)\n- **Day 4:** Integration Sprint (Project Building)\n- **Day 5:** Refinement & Rehearsal\n- **Day 6:** **IoT Expo** (Final Presentation)\n\n---\n\n## Eligibility & Registration\n\n- Open to all NCIT students.\n- **Project-based selection:** Participants must submit a project concept via the official form 3 days prior to the start.",
+      "image": "/event/003/IoTExpo2082.png",
+      "status": "past",
       "tags": [
         "IoT",
         "Embedded Systems",
         "Hardware",
-        "Workshop",
-        "Arduino"
+        "Workshop"
       ]
     },
     {
